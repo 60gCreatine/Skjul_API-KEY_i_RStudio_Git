@@ -3,10 +3,14 @@ Opsætning af API-nøgle ved brug af .Renviron og Git
 For at beskytte API-nøgler i dette projekt bruger vi en .Renviron-fil til at gemme nøgler som miljøvariabler, og vi undgår at tilføje dem til Git ved hjælp af .gitignore. Følg disse trin for at oprette og indlæse API-nøglen på en sikker måde:
 
 Opret .Renviron-filen:
-I projektets rodmappe (eller i brugerens hjemmemappe) opret en fil kaldet .Renviron.
-Tilføj din API-nøgle til filen i følgende format:
+I din terminal i RStudio skriver du nano .Renviron
+Tilføj din API-nøgle til filen i følgende format via din terminal:
 
     API_KEY=din_api_nøgle
+    
+![3fInb0w](https://github.com/user-attachments/assets/a715a4e4-211d-4bf5-99eb-aca967d06454)
+
+Hvorefter du siger ctrl + X (Exit) og så Enter (Save)
 
 Tilføj .Renviron (Miljøvariabel/Environmental variable) til .gitignore:
 Sørg for, at .Renviron-filen er tilføjet til .gitignore, så den ikke bliver tilføjet til Git-repositoryet:
@@ -28,6 +32,7 @@ Da .Renviron-filen er en skjult fil (navnet starter med et punktum), vises den i
             	2.	Klik på fanen View (Vis).
             	3.	Markér afkrydsningsfeltet Hidden items (Skjulte elementer) i afsnittet “Show/hide” (Vis/skjul).
 	                4.	Skjulte filer som .Renviron vil nu blive vist. Du kan fjerne markeringen for at skjule dem igen.
+![xf1ZmgA](https://github.com/user-attachments/assets/20b20e09-c7d0-442c-b363-eaa0ceeb0520)
 
 
 Indlæs API-nøglen i R:
