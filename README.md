@@ -1,42 +1,51 @@
-Opsætning af API-nøgle ved brug af .Renviron og Git
+# Beskyttelse af API-nøgler i Git-projekter
 
-For at beskytte API-nøgler i dette projekt bruger vi en .Renviron-fil til at gemme nøgler som miljøvariabler, og vi undgår at tilføje dem til Git ved hjælp af .gitignore. Følg disse trin for at oprette og indlæse API-nøglen på en sikker måde:
+I dette projekt bruger vi en `.Renviron`-fil til at gemme følsomme data såsom API-nøgler. Denne guide viser, hvordan du opretter og beskytter din API-nøgle ved hjælp af miljøvariabler og `.gitignore`, så nøglen ikke utilsigtet bliver delt via GitHub. Følg disse trin for at sikre dine nøgler.
 
-Opret .Renviron-filen:
-I din terminal i RStudio skriver du nano .Renviron
-Tilføj din API-nøgle til filen i følgende format via din terminal:
+<br>
 
-    API_KEY=din_api_nøgle
+## Trin 1: Opret `.Renviron`-filen:
+1. Åbn din terminal i RStudio og skriv `nano .Renviron`.
+2. Tilføj din API-nøgle til filen i følgende format via terminalen:
+	
+		API_KEY=din_api_nøgle
     
 ![3fInb0w](https://github.com/user-attachments/assets/a715a4e4-211d-4bf5-99eb-aca967d06454)
 
-Hvorefter du siger ctrl + X (Exit) og så Enter (Save)
+3. Tryk `ctrl + X` (Exit) og så `Enter` (Save)
 
-Tilføj .Renviron (Miljøvariabel/Environmental variable) til .gitignore:
+<br>
+
+## Trin 2: Tilføj `.Renviron` (Miljøvariabel/Environmental variable) til `.gitignore`:
 Sørg for, at .Renviron-filen er tilføjet til .gitignore, så den ikke bliver tilføjet til Git-repositoryet:
 
     .Renviron
 
-Da .Renviron-filen er en skjult fil (navnet starter med et punktum), vises den ikke automatisk i filhåndteringsprogrammer som Finder (Mac) eller File Explorer (Windows).                For at oprette eller finde .Renviron-filen skal du muligvis ændre visningsindstillingerne for at få vist skjulte filer.
+Dette forhindrer filen i at blive delt, når du committer og pusher til GitHub. Og derved forfindre folk i at få adgang til din API-nøgle.
 
-                På Mac:
-                For at vise skjulte filer i Finder skal du gøre følgende:
-	            1.	Åbn Finder i den mappe, hvor du vil oprette eller se .Renviron-filen.
-	            2.	Tryk på Cmd + Shift + . (punktum) på tastaturet.
-	            3.	Skjulte filer, inklusive .Renviron, vil nu blive vist. For at skjule dem igen kan du trykke på Cmd + Shift + . igen.
+<br>
+
+## Trin 3: Vis skulfte filer (Mac/Windows)
+Da `.Renviron`-filen er en skjult fil (navnet starter med et punktum), vises den ikke automatisk i filhåndteringsprogrammer som Finder (Mac) eller File Explorer (Windows).
+For at finde .Renviron-filen skal du muligvis ændre visningsindstillingerne for at få vist skjulte filer.
+
+#### På Mac:
+For at vise skjulte filer i Finder skal du gøre følgende:
+1. Åbn Finder i den relevante mappe.
+2. Tryk på `Cmd + Shift + .`(punktum) for at vise skjulte filer.
+3. For at skjule dem igen, gentag kommandoen.
 <img width="773" alt="Screenshot 2024-10-03 at 12 40 35" src="https://github.com/user-attachments/assets/f1766d03-67cc-44c2-bf57-25437b3e87fb">
 
-                På Windows:
-                For at vise skjulte filer i File Explorer:
-            	1.	Åbn File Explorer og naviger til den mappe, hvor du vil oprette eller se .Renviron-filen.
-            	2.	Klik på fanen View (Vis).
-            	3.	Markér afkrydsningsfeltet Hidden items (Skjulte elementer) i afsnittet “Show/hide” (Vis/skjul).
-	                4.	Skjulte filer som .Renviron vil nu blive vist. Du kan fjerne markeringen for at skjule dem igen.
+#### På Windows:
+For at vise skjulte filer i File Explorer:
+1. Åbn File Explorer og gå til mappen.
+2. Klik på "View" og markér "Hidden items".
 ![xf1ZmgA](https://github.com/user-attachments/assets/20b20e09-c7d0-442c-b363-eaa0ceeb0520)
 
+<br>
 
-Indlæs API-nøglen i R:
-I dine R-scripts kan du hente API-nøglen ved at bruge følgende kode:
+## Trin 4: Indlæs API-nøglen i R:
+Når du har oprettet `.Renviron`, kan du hente din API-nøgle i dine R-scripts ved hjælp af følgende kode:
 
     # Læs miljøvariabler fra .Renviron
     readRenviron(".Renviron")
@@ -44,15 +53,17 @@ I dine R-scripts kan du hente API-nøglen ved at bruge følgende kode:
     # Hent API-nøglen
     api_key <- Sys.getenv("API_KEY")
 
-Genoprettelse på en ny maskine:
-Når du kloner repositoryet på en ny maskine, skal du manuelt oprette en ny .Renviron-fil og tilføje API-nøglen igen. Nøglen deles ikke via GitHub.
+<br>
 
-Her er 2 billeder, for at tjekke et metoden virker:
+## Trin 5: Oprettelse af API på en ny maskine:
+Når du kloner repositoryet på en ny maskine, skal du manuelt oprette en ny `.Renviron`-fil og tilføje API-nøglen igen. Nøglen deles ikke via GitHub.
 
-1) Initial Commit maskine
+#### Eksempel på en skjult API-nøgle:
+
+Initial Commit maskine, her kan API-nøglen læses:
 <img width="1440" alt="Screenshot 2024-10-03 at 12 24 09" src="https://github.com/user-attachments/assets/5e125ce2-b80f-4090-ac11-d9e5f35b9142">
 
+<br>
 
-
-2) Ekstern maskine:
+Ekstern maskine, her kan den ikke, grundet der ikke er tilføjet et `.Renviron`-fil:
 ![ZxEpH43](https://github.com/user-attachments/assets/1172092d-ff9c-4dd7-b999-e78cd31b13a2)
