@@ -1,5 +1,6 @@
 # API-KEY
 api_key.R
+.Renviron
 
 # History files
 .Rhistory
