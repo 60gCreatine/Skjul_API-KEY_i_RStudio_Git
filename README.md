@@ -1,9 +1,20 @@
-# Beskyttelse af API-nøgler i Git-projekter
+# Beskyttelse af API-nøgler eller andre følsomme data fra RStudio i Git
 
-I dette projekt bruger vi en `.Renviron`-fil til at gemme følsomme data såsom API-nøgler. Denne guide viser, hvordan du opretter og beskytter din API-nøgle ved hjælp af miljøvariabler og `.gitignore`, så nøglen ikke utilsigtet bliver delt via GitHub. Følg disse trin for at sikre dine nøgler.
+I dette projekt bruger vi en `.Renviron`-fil til at gemme følsomme data, såsom API-nøgler, ved hjælp af miljøvariabler. API-nøgler er ofte nødvendige for at få adgang til eksterne tjenester, men det er vigtigt at beskytte dem, da en eksponeret nøgle kan give uvedkommende adgang til de systemer eller tjenester, den er forbundet med. Deling af API-nøgler utilsigtet via et offentligt GitHub-repository kan potentielt føre til sikkerhedsbrud og misbrug af API-adgang, hvilket kan resultere i uønskede økonomiske omkostninger eller kompromitterede systemer.
+
+#### Hvorfor bruge `.Renviron`-filer?
+En `.Renviron`-fil bruges i R til at gemme miljøvariabler, som kan indlæses i din session. Miljøvariabler er en sikker måde at gemme følsom information som API-nøgler og adgangskoder på, fordi de gemmes uden for selve kildekoden og kan tilgås, når det er nødvendigt, uden at være synlige i din kode.
+
+Når du tilføjer en API-nøgle direkte til din kode, kan den utilsigtet ende i et Git-commit og blive delt på GitHub. Ved at bruge en `.Renviron`-fil kan du opbevare nøglen sikkert i dit lokale miljø og hente den i din R-kode, når det er nødvendigt.
+
+#### Hvorfor bruge `.gitignore`?
+`.gitignore` er en fil, som Git bruger til at ignorere bestemte filer eller mapper i dit projekt, så de ikke tilføjes til dit repository. Ved at tilføje `.Renviron` til `.gitignore` forhindrer du, at filen – og dermed din API-nøgle – bliver tracket af Git og utilsigtet uploadet til GitHub. Dette er en ekstra sikkerhedsforanstaltning for at beskytte dine følsomme data.
+
+Ved at kombinere `.Renviron` og `.gitignore` kan du oprette et system, der holder dine API-nøgler sikre og adskilt fra din delte kodebase.
 
 <br>
 
+# Sådan gør du:
 ## Trin 1: Opret `.Renviron`-filen:
 1. Åbn din terminal i RStudio og skriv `nano .Renviron`.
 2. Tilføj din API-nøgle til filen i følgende format via terminalen:
@@ -25,7 +36,7 @@ Dette forhindrer filen i at blive delt, når du committer og pusher til GitHub. 
 
 <br>
 
-## Trin 3: Vis skulfte filer (Mac/Windows)
+## Trin 3: Vis skjulte filer (Mac/Windows)
 Da `.Renviron`-filen er en skjult fil (navnet starter med et punktum), vises den ikke automatisk i filhåndteringsprogrammer som Finder (Mac) eller File Explorer (Windows).
 For at finde .Renviron-filen skal du muligvis ændre visningsindstillingerne for at få vist skjulte filer.
 
