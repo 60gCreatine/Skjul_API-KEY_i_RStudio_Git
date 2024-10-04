@@ -28,9 +28,10 @@ Ved at kombinere `.Renviron` og `.gitignore` kan du oprette et system, der holde
 <br>
 
 ## Trin 2: Tilføj `.Renviron` (Miljøvariabel/Environmental variable) til `.gitignore`:
-Sørg for, at .Renviron-filen er tilføjet til .gitignore, så den ikke bliver tilføjet til Git-repositoryet:
+Sørg for, at `.Renviron`-filen er tilføjet til `.gitignore`-filen, så den ikke bliver tilføjet til Git-repositoryet:
 
-    .Renviron
+![oH8FmtZ](https://github.com/user-attachments/assets/f5489f9b-2423-49a4-8d87-51894d06f6c0)
+
 
 Dette forhindrer filen i at blive delt, når du committer og pusher til GitHub. Og derved forfindre folk i at få adgang til din API-nøgle.
 
@@ -38,7 +39,7 @@ Dette forhindrer filen i at blive delt, når du committer og pusher til GitHub. 
 
 ## Trin 3: Vis skjulte filer (Mac/Windows)
 Da `.Renviron`-filen er en skjult fil (navnet starter med et punktum), vises den ikke automatisk i filhåndteringsprogrammer som Finder (Mac) eller File Explorer (Windows).
-For at finde .Renviron-filen skal du muligvis ændre visningsindstillingerne for at få vist skjulte filer.
+For at finde `.Renviron`-filen skal du muligvis ændre visningsindstillingerne for at få vist skjulte filer.
 
 #### På Mac:
 For at vise skjulte filer i Finder skal du gøre følgende:
