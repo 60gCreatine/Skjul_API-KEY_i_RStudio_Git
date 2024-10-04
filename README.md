@@ -30,7 +30,7 @@ Ved at kombinere `.Renviron` og `.gitignore` kan du oprette et system, der holde
 ## Trin 2: Tilføj `.Renviron` (Miljøvariabel/Environmental variable) til `.gitignore`:
 Sørg for, at `.Renviron`-filen er tilføjet til `.gitignore`-filen, så den ikke bliver tilføjet til Git-repositoryet:
 
-![oH8FmtZ](https://github.com/user-attachments/assets/f5489f9b-2423-49a4-8d87-51894d06f6c0)
+![i8o0gef](https://github.com/user-attachments/assets/1223e766-2ce8-4186-9aa8-3430149b521f)
 
 
 Dette forhindrer filen i at blive delt, når du committer og pusher til GitHub. Og derved forfindre folk i at få adgang til din API-nøgle.
